@@ -4,7 +4,9 @@ const userController = {
     homePage: async (req, res) => {
         const allData = await mapper.getAllData();
 
-        res.render("pages/home", { data: allData });
+        console.log(req.session.panier);
+
+        res.render("pages/home", { data: allData, counterPage: req.session.counterPage, panier: req.session.panier });
     },
     detail: async (req, res) => {
         const currentId = parseInt(req.params.id);
@@ -19,6 +21,13 @@ const userController = {
         } else {
             res.send("Il n'y a personne ici...");
         }
+    },
+    panierAdd: (req, res) => {
+        req.session.panier.push({
+            id: 23,
+            name: "mon article",
+        });
+        res.send("Je suis là");
     },
 };
 

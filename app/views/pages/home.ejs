@@ -3,11 +3,16 @@
     <%- include('../partials/head', { pageTitle: "Home Page"}) %>
     <body>
         <h1>HOME PAGE</h1>
+        <p>Vous êtes le <%= counterPage %> visiteur sur cette page</p>
 
         <ul>
             <% for (const user of data) { %>
             <li><a href="/user/<%= user.id %>"><%= user.name %></a></li>
             <% } %>
         </ul>
+
+        <a href="/panier/add">Ajouter au panier</a>
+
+        <% if(panier.length > 0) { %> Passer à la commande <% } %>
     </body>
 </html>

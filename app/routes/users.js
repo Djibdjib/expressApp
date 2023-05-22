@@ -6,6 +6,7 @@ const controller = require("../controllers/userController");
 const user = (app) => {
     router.get("/", controller.homePage);
     router.get("/user/:id", controller.detail);
+    router.get("/panier/add", controller.panierAdd);
 
     app.use(router);
 };
